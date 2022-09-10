@@ -1,0 +1,11 @@
+{
+  "src/resources/index.js": {
+    "file": "humble-google-translate-component.umd.js",
+    "src": "src/resources/index.js",
+    "isEntry": true
+  },
+  "style.css": {
+    "file": "style.css",
+    "src": "style.css"
+  }
+}
