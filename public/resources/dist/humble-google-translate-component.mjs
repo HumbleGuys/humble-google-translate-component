@@ -1,23 +1,23 @@
-const w = ({ defaultLanguage: e, availableLanguages: a }) => ({
+const w = ({ defaultLanguage: e, availableLanguages: n }) => ({
   activeLanguage: e,
   init() {
     this.$store.googleTranslate.initStore(
       e,
-      a
+      n
     ), Alpine.effect(() => {
       this.activeLanguage = this.$store.googleTranslate.activeLanguage;
     });
   },
-  changeLanguage(o) {
-    this.$store.googleTranslate.changeLanguage(o);
+  changeLanguage(a) {
+    this.$store.googleTranslate.changeLanguage(a);
   }
 });
 /*! js-cookie v3.0.1 | MIT */
 function l(e) {
-  for (var a = 1; a < arguments.length; a++) {
-    var o = arguments[a];
-    for (var c in o)
-      e[c] = o[c];
+  for (var n = 1; n < arguments.length; n++) {
+    var a = arguments[n];
+    for (var c in a)
+      e[c] = a[c];
   }
   return e;
 }
@@ -32,52 +32,52 @@ var C = {
     );
   }
 };
-function d(e, a) {
-  function o(t, s, n) {
+function d(e, n) {
+  function a(o, s, t) {
     if (!(typeof document > "u")) {
-      n = l({}, a, n), typeof n.expires == "number" && (n.expires = new Date(Date.now() + n.expires * 864e5)), n.expires && (n.expires = n.expires.toUTCString()), t = encodeURIComponent(t).replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent).replace(/[()]/g, escape);
+      t = l({}, n, t), typeof t.expires == "number" && (t.expires = new Date(Date.now() + t.expires * 864e5)), t.expires && (t.expires = t.expires.toUTCString()), o = encodeURIComponent(o).replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent).replace(/[()]/g, escape);
       var i = "";
-      for (var r in n)
-        !n[r] || (i += "; " + r, n[r] !== !0 && (i += "=" + n[r].split(";")[0]));
-      return document.cookie = t + "=" + e.write(s, t) + i;
+      for (var r in t)
+        !t[r] || (i += "; " + r, t[r] !== !0 && (i += "=" + t[r].split(";")[0]));
+      return document.cookie = o + "=" + e.write(s, o) + i;
     }
   }
-  function c(t) {
-    if (!(typeof document > "u" || arguments.length && !t)) {
-      for (var s = document.cookie ? document.cookie.split("; ") : [], n = {}, i = 0; i < s.length; i++) {
+  function c(o) {
+    if (!(typeof document > "u" || arguments.length && !o)) {
+      for (var s = document.cookie ? document.cookie.split("; ") : [], t = {}, i = 0; i < s.length; i++) {
         var r = s[i].split("="), L = r.slice(1).join("=");
         try {
           var u = decodeURIComponent(r[0]);
-          if (n[u] = e.read(L, u), t === u)
+          if (t[u] = e.read(L, u), o === u)
             break;
         } catch {
         }
       }
-      return t ? n[t] : n;
+      return o ? t[o] : t;
     }
   }
   return Object.create(
     {
-      set: o,
+      set: a,
       get: c,
-      remove: function(t, s) {
-        o(
-          t,
+      remove: function(o, s) {
+        a(
+          o,
           "",
           l({}, s, {
             expires: -1
           })
         );
       },
-      withAttributes: function(t) {
-        return d(this.converter, l({}, this.attributes, t));
+      withAttributes: function(o) {
+        return d(this.converter, l({}, this.attributes, o));
       },
-      withConverter: function(t) {
-        return d(l({}, this.converter, t), this.attributes);
+      withConverter: function(o) {
+        return d(l({}, this.converter, o), this.attributes);
       }
     },
     {
-      attributes: { value: Object.freeze(a) },
+      attributes: { value: Object.freeze(n) },
       converter: { value: Object.freeze(e) }
     }
   );
@@ -85,8 +85,8 @@ function d(e, a) {
 var g = d(C, { path: "/" });
 const p = "googleTranslateInit";
 let h = !1, f, m;
-const v = new Promise((e, a) => {
-  f = e, m = a;
+const v = new Promise((e, n) => {
+  f = e, m = n;
 });
 function E() {
   if (h)
@@ -100,9 +100,9 @@ const A = {
   availableLanguages: null,
   pageLanguage: null,
   initalizaed: !1,
-  initStore() {
-    this.initalizaed || (this.initalizaed = !0, E().then((e) => {
-      new e.translate.TranslateElement(
+  initStore(e, n) {
+    this.initalizaed || (this.pageLanguage = e, this.availableLanguages = n, this.initalizaed = !0, E().then((a) => {
+      new a.translate.TranslateElement(
         {
           pageLanguage: this.pageLanguage,
           availableLanguages: this.availableLanguages ? this.availableLanguages.join(",") : null,
@@ -126,12 +126,12 @@ const A = {
     }), g.set("GoogleAccountsLocale_session", e, {
       expires: 999
     }), requestAnimationFrame(() => {
-      const a = document.querySelector(
+      const n = document.querySelector(
         "#google_translate_element select"
       );
-      a.value = e;
-      let o;
-      typeof Event == "function" ? o = new Event("change") : (o = document.createEvent("Event"), o.initEvent("change", !0, !0)), a.dispatchEvent(o), a.dispatchEvent(o);
+      n.value = e;
+      let a;
+      typeof Event == "function" ? a = new Event("change") : (a = document.createEvent("Event"), a.initEvent("change", !0, !0)), n.dispatchEvent(a), n.dispatchEvent(a);
     });
   }
 };
