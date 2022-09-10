@@ -10,10 +10,13 @@ export default {
 
     initalizaed: false,
 
-    initStore() {
+    initStore(defaultLanguage, availableLanguages) {
         if (this.initalizaed) {
             return;
         }
+
+        this.pageLanguage = defaultLanguage;
+        this.availableLanguages = availableLanguages;
 
         this.initalizaed = true;
 
